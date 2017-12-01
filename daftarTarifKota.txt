@@ -1,0 +1,10 @@
+DKI Jakarta, Jakarta Pusat, 7500, 10000, 15000, 20000, 30000
+DKI Jakarta, Jakarta Barat, 7500, 10000, 15000, 20000, 30000
+DKI Jakarta, Jakarta Timur, 7500, 10000, 15000, 20000, 30000
+DKI Jakarta, Jakarta Utara, 7500, 10000, 15000, 20000, 30000
+Banten, Tangerang, 10000, 15000, 23000, 28000, 38000
+Banten, Serang, 15000, 20000, 28000, 33000, 43000
+Banten, Kabupaten Tangerang, 15000, 20000, 28000, 33000, 43000
+Banten, Pandeglang, 15000, 20000, 28000, 33000, 43000
+Banten, Tangerang Selatan, 10000, 15000, 23000, 28000, 38000
+Banten, Cilegon, 15000, 20000, 28000, 33000, 43000

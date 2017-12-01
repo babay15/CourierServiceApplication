@@ -870,6 +870,11 @@ public class AplikasiPengiriman extends javax.swing.JFrame {
         jLabel20.setText(":");
 
         hargaTextField.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        hargaTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                hargaTextFieldKeyTyped(evt);
+            }
+        });
 
         jLabel21.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel21.setText("Paket");
@@ -1281,39 +1286,39 @@ public class AplikasiPengiriman extends javax.swing.JFrame {
         // TODO add your handling code here:
         try{
             //DATA PENERIMA
-            penerima.setNamaPenerima(namaPenerimaTextField.getText());
-            penerima.setTeleponPenerima(nomorTeleponPenerimaTextField.getText());
-            penerima.setAlamatPenerima(alamatPenerimaTextArea.getText());
+            penerima.setNamaPenerima(namaPenerimaTextField.getText().trim());
+            penerima.setTeleponPenerima(nomorTeleponPenerimaTextField.getText().trim());
+            penerima.setAlamatPenerima(alamatPenerimaTextArea.getText().trim());
             penerima.setProvinsiPenerima(provinsiPenerimaComboBox.getSelectedItem().toString());
             penerima.setKotaPenerima(kotaPenerimaComboBox.getSelectedItem().toString());
-            penerima.setKodeposPenerima(kodePosPenerimaTextField.getText());
+            penerima.setKodeposPenerima(kodePosPenerimaTextField.getText().trim());
 
             //DATA PENGIRIM
-            pengirim.setNamaPengirim(namaPengirimTextField.getText());
-            pengirim.setTeleponPengirim(nomorTeleponPengirimTextField.getText());
-            pengirim.setAlamatPengirim(alamatPengirimTextArea.getText());
+            pengirim.setNamaPengirim(namaPengirimTextField.getText().trim());
+            pengirim.setTeleponPengirim(nomorTeleponPengirimTextField.getText().trim());
+            pengirim.setAlamatPengirim(alamatPengirimTextArea.getText().trim());
             pengirim.setProvinsiPengirim(provinsiPengirimComboBox.getSelectedItem().toString());
             pengirim.setKotaPengirim(kotaPengirimComboBox.getSelectedItem().toString());
-            pengirim.setKodeposPengirim(kodePosPengirimTextField.getText());
+            pengirim.setKodeposPengirim(kodePosPengirimTextField.getText().trim());
 
 
             //DATA KIRIMAN
-            pengiriman.setNomorPaket(nomorPaketTextField.getText());
+            pengiriman.setNomorPaket(nomorPaketTextField.getText().trim());
             pengiriman.setKotaTujuan(kotaPengirimanComboBox.getSelectedItem().toString());
-            pengiriman.setJenisBarang(jenisBarangTextField.getText());
-            pengiriman.setBeratBerang(Integer.parseInt(beratTextField.getText()));
+            pengiriman.setJenisBarang(jenisBarangTextField.getText().trim());
+            pengiriman.setBeratBerang(Integer.parseInt(beratTextField.getText().trim()));
             pengiriman.setTanggalKirim(tanggalKirimDateChooser.getDate());
-            pengiriman.setPanjang(Double.parseDouble(panjangTextField.getText()));
-            pengiriman.setLebar(Double.parseDouble(lebarTextField.getText()));
-            pengiriman.setTinggi(Double.parseDouble(tinggiTextField.getText()));
-            pengiriman.setPaket(tipePaketComboBox.getSelectedItem().toString());
+            pengiriman.setPanjang(Double.parseDouble(panjangTextField.getText().trim()));
+            pengiriman.setLebar(Double.parseDouble(lebarTextField.getText().trim()));
+            pengiriman.setTinggi(Double.parseDouble(tinggiTextField.getText().trim()));
+            pengiriman.setPaket(tipePaketComboBox.getSelectedItem().toString().trim());
             if(asuransiRadioButton1.isSelected())
             {pengiriman.setAsuransi(true);}
             else{pengiriman.setAsuransi(false);}
-            pengiriman.setHargaBarang(Double.parseDouble(hargaTextField.getText()));
-            pengiriman.setPembayaran(pembayaranComboBox.getSelectedItem().toString());
+            pengiriman.setHargaBarang(Double.parseDouble(hargaTextField.getText().trim()));
+            pengiriman.setPembayaran(pembayaranComboBox.getSelectedItem().toString().trim());
+            
             SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-
             String search = String.valueOf(tipePaketComboBox.getSelectedItem());
 
             if(search.equalsIgnoreCase("Regular")){
@@ -1603,6 +1608,16 @@ public class AplikasiPengiriman extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_tinggiTextFieldKeyTyped
+
+    private void hargaTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_hargaTextFieldKeyTyped
+        // TODO add your handling code here:
+        char karakter = evt.getKeyChar();
+        if(!((karakter >= '0') && (karakter <= '9') || (karakter == KeyEvent.VK_BACK_SPACE) || (karakter == KeyEvent.VK_DELETE) || (karakter == '.'))){
+            getToolkit().beep();
+            JOptionPane.showMessageDialog(rootPane, "Hanya bisa dimasukan angka.");
+            evt.consume();
+        }
+    }//GEN-LAST:event_hargaTextFieldKeyTyped
 
     /**
      * @param args the command line arguments

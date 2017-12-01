@@ -36,7 +36,7 @@ public class KotaDanTarifDAO {
     
     public void seluruhPerhitungan(){
         try {
-            Scanner scan = new Scanner(new File("C:/Users/user/Documents/NetBeansProjects/daftarTarifKota.txt"));
+            Scanner scan = new Scanner(new File("C:/Users/user/Documents/NetBeansProjects/AplikasiPengirimanPaket/daftarTarifKota.txt"));
             
             while(scan.hasNextLine()){
                 String line = scan.nextLine();
