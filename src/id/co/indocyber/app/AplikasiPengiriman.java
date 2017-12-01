@@ -32,8 +32,8 @@ public class AplikasiPengiriman extends javax.swing.JFrame {
     public AplikasiPengiriman() {
         initComponents();
         kdtd.seluruhPerhitungan();
-        kotaPenerimaComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jakarta Utara", "Jakarta Barat", "Jakarta Timur", "Jakarta Selatan"}));
-        kotaPengirimanComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jakarta Utara", "Jakarta Barat", "Jakarta Timur", "Jakarta Selatan"}));
+        kotaPenerimaComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jakarta Pusat", "Jakarta Utara", "Jakarta Barat", "Jakarta Timur", "Jakarta Selatan"}));
+        kotaPengirimanComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jakarta Pusat", "Jakarta Utara", "Jakarta Barat", "Jakarta Timur", "Jakarta Selatan"}));
         kotaPengirimanComboBox.setVisible(false);
         jLabel52.setVisible(false);
         jLabel53.setVisible(false);
@@ -1501,8 +1501,8 @@ public class AplikasiPengiriman extends javax.swing.JFrame {
     private void provinsiPenerimaComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_provinsiPenerimaComboBoxActionPerformed
         // TODO add your handling code here:
         if(String.valueOf(provinsiPenerimaComboBox.getSelectedItem()).equalsIgnoreCase("DKI Jakarta")){
-            kotaPenerimaComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jakarta Utara", "Jakarta Barat", "Jakarta Timur", "Jakarta Selatan"}));
-            kotaPengirimanComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jakarta Utara", "Jakarta Barat", "Jakarta Timur", "Jakarta Selatan"}));
+            kotaPenerimaComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jakarta Pusat","Jakarta Utara", "Jakarta Barat", "Jakarta Timur", "Jakarta Selatan"}));
+            kotaPengirimanComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jakarta Pusat","Jakarta Utara", "Jakarta Barat", "Jakarta Timur", "Jakarta Selatan"}));
         }
         else if(String.valueOf(provinsiPenerimaComboBox.getSelectedItem()).equalsIgnoreCase("Banten")){
         kotaPenerimaComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"Tangerang", "Kabupaten Tangerang", "Tangerang Selatan", "Cilegon", "Pandeglang", "Serang" }));
