@@ -164,9 +164,6 @@ public class AplikasiPengiriman extends javax.swing.JFrame {
         jLabel38 = new javax.swing.JLabel();
         tinggiTextField = new javax.swing.JTextField();
         jLabel39 = new javax.swing.JLabel();
-        jLabel44 = new javax.swing.JLabel();
-        jLabel45 = new javax.swing.JLabel();
-        nomorPaketTextField = new javax.swing.JTextField();
         jLabel46 = new javax.swing.JLabel();
         jLabel47 = new javax.swing.JLabel();
         jenisBarangTextField = new javax.swing.JTextField();
@@ -953,14 +950,6 @@ public class AplikasiPengiriman extends javax.swing.JFrame {
         jLabel39.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel39.setText("cm");
 
-        jLabel44.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel44.setText("Kode");
-
-        jLabel45.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel45.setText(":");
-
-        nomorPaketTextField.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-
         jLabel46.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel46.setText("Jenis");
 
@@ -1010,10 +999,6 @@ public class AplikasiPengiriman extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel44)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel45, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel31)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1055,8 +1040,7 @@ public class AplikasiPengiriman extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jenisBarangTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tanggalKirimDateChooser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
-                            .addComponent(nomorPaketTextField))
+                            .addComponent(tanggalKirimDateChooser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1093,12 +1077,6 @@ public class AplikasiPengiriman extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel44)
-                    .addComponent(jLabel45)
-                    .addComponent(nomorPaketTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel46)
                     .addComponent(jLabel47)
@@ -1263,7 +1241,6 @@ public class AplikasiPengiriman extends javax.swing.JFrame {
         kodePosPengirimTextField.setText("");
         
         //PENGIRIMAN
-        nomorPaketTextField.setText("");
         jenisBarangTextField.setText("");
         tanggalKirimDateChooser.setDate(null);
         beratTextField.setText("");
@@ -1285,6 +1262,10 @@ public class AplikasiPengiriman extends javax.swing.JFrame {
     private void prosesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prosesButtonActionPerformed
         // TODO add your handling code here:
         try{
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+            SimpleDateFormat sdf2 = new SimpleDateFormat("ddMMyyhhmm");
+            String search = String.valueOf(tipePaketComboBox.getSelectedItem());
+            
             //DATA PENERIMA
             penerima.setNamaPenerima(namaPenerimaTextField.getText().trim());
             penerima.setTeleponPenerima(nomorTeleponPenerimaTextField.getText().trim());
@@ -1303,7 +1284,7 @@ public class AplikasiPengiriman extends javax.swing.JFrame {
 
 
             //DATA KIRIMAN
-            pengiriman.setNomorPaket(nomorPaketTextField.getText().trim());
+            pengiriman.setNomorPaket("MXC-"+sdf2.format(tanggalKirimDateChooser.getDate()));
             pengiriman.setKotaTujuan(kotaPengirimanComboBox.getSelectedItem().toString());
             pengiriman.setJenisBarang(jenisBarangTextField.getText().trim());
             pengiriman.setBeratBerang(Integer.parseInt(beratTextField.getText().trim()));
@@ -1317,9 +1298,6 @@ public class AplikasiPengiriman extends javax.swing.JFrame {
             else{pengiriman.setAsuransi(false);}
             pengiriman.setHargaBarang(Double.parseDouble(hargaTextField.getText().trim()));
             pengiriman.setPembayaran(pembayaranComboBox.getSelectedItem().toString().trim());
-            
-            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-            String search = String.valueOf(tipePaketComboBox.getSelectedItem());
 
             if(search.equalsIgnoreCase("Regular")){
                 
@@ -1328,7 +1306,7 @@ public class AplikasiPengiriman extends javax.swing.JFrame {
                 pengiriman.getHargaPaketReguler();
                 pengiriman.setHargaDikaliBarang();
                 pengiriman.setHargaSetelahAsuransi();
-
+                
                 namaPenerimaLabel.setText(penerima.getNamaPenerima());
                 alamatPenerimaLabel.setText(penerima.getAlamatPenerima());
                 kotaPenerimaLabel.setText(penerima.getKotaPenerima());
@@ -1708,8 +1686,6 @@ public class AplikasiPengiriman extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
-    private javax.swing.JLabel jLabel44;
-    private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
@@ -1770,7 +1746,6 @@ public class AplikasiPengiriman extends javax.swing.JFrame {
     private javax.swing.JLabel namaPengirimLabel;
     private javax.swing.JTextField namaPengirimTextField;
     private javax.swing.JLabel nomerPengiriman;
-    private javax.swing.JTextField nomorPaketTextField;
     private javax.swing.JLabel nomorTeleponPenerimaLabel;
     private javax.swing.JTextField nomorTeleponPenerimaTextField;
     private javax.swing.JLabel nomorTeleponPengirimLabel;
