@@ -40,7 +40,7 @@ public class KotaDanTarifDAO {
     
     public void seluruhPerhitungan(){
         try {
-            Scanner scan = new Scanner(new File("C:/Users/user/Documents/NetBeansProjects/AplikasiPengirimanPaket/daftarTarifKota.txt"));
+            Scanner scan = new Scanner(new File(KotaDanTarifDAO.class.getResource("/id/co/indocyber/dao/daftarTarifKota.txt").getFile()));
             
             while(scan.hasNextLine()){
                 String line = scan.nextLine();
@@ -63,7 +63,7 @@ public class KotaDanTarifDAO {
     
     public void seluruhProvinsi(){
         try {
-            Scanner scan = new Scanner(new File("C:/Users/user/Documents/NetBeansProjects/AplikasiPengirimanPaket/daftarTarifKota.txt"));
+            Scanner scan = new Scanner(new File(KotaDanTarifDAO.class.getResource("/id/co/indocyber/dao/daftarTarifKota.txt").getFile()));
             while(scan.hasNextLine()){
                 String line = scan.nextLine();
                 String[] data = line.split(",");
@@ -78,7 +78,7 @@ public class KotaDanTarifDAO {
     public String[] seluruhKota(String provinsiX){
         String[] arrayKota = {};
         try {
-            Scanner scan = new Scanner(new File("C:/Users/user/Documents/NetBeansProjects/AplikasiPengirimanPaket/daftarTarifKota.txt"));
+            Scanner scan = new Scanner(new File(KotaDanTarifDAO.class.getResource("/id/co/indocyber/dao/daftarTarifKota.txt").getFile()));
             while(scan.hasNextLine()){
                 String line = scan.nextLine();
                 String[] data = line.split(",");
