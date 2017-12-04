@@ -5,7 +5,6 @@
  */
 package id.co.indocyber.dao;
 
-import id.co.indocyber.model.Kota;
 import id.co.indocyber.model.Pengirim;
 import id.co.indocyber.model.Pengiriman;
 import id.co.indocyber.model.Tarif;
