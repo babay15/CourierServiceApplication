@@ -6,7 +6,6 @@
 package id.co.indocyber.app;
 
 import id.co.indocyber.dao.KotaDanTarifDAO;
-import id.co.indocyber.model.Kota;
 import id.co.indocyber.model.Penerima;
 import id.co.indocyber.model.Pengirim;
 import id.co.indocyber.model.Pengiriman;
@@ -24,7 +23,6 @@ public class AplikasiPengiriman extends javax.swing.JFrame {
     Pengiriman pengiriman = new Pengiriman();
     Pengirim pengirim = new Pengirim();
     Penerima penerima = new Penerima();
-    Kota kota = new Kota();
     
     KotaDanTarifDAO kdtd = new KotaDanTarifDAO();
     final double asuransi = 0.03;
