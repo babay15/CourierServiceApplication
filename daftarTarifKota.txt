@@ -9,3 +9,5 @@ Banten, Kabupaten Tangerang, 12000, 17000, 25000, 30000, 40000
 Banten, Pandeglang, 20000, 25000, 33000, 38000, 48000
 Banten, Tangerang Selatan, 11000, 16000, 24000, 29000, 39000
 Banten, Cilegon, 21000, 26000, 34000, 39000, 49000
+Jawa Barat, Bandung, 21000, 26000, 34000, 39000, 49000
+Jawa Barat, Cimahi, 28000, 35000, 39000, 41000, 48000

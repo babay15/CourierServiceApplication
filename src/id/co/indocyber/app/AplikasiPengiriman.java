@@ -6,6 +6,7 @@
 package id.co.indocyber.app;
 
 import id.co.indocyber.dao.KotaDanTarifDAO;
+import id.co.indocyber.model.Kota;
 import id.co.indocyber.model.Penerima;
 import id.co.indocyber.model.Pengirim;
 import id.co.indocyber.model.Pengiriman;
@@ -23,6 +24,7 @@ public class AplikasiPengiriman extends javax.swing.JFrame {
     Pengiriman pengiriman = new Pengiriman();
     Pengirim pengirim = new Pengirim();
     Penerima penerima = new Penerima();
+    Kota kota = new Kota();
     
     KotaDanTarifDAO kdtd = new KotaDanTarifDAO();
     final double asuransi = 0.03;
@@ -32,13 +34,23 @@ public class AplikasiPengiriman extends javax.swing.JFrame {
     public AplikasiPengiriman() {
         initComponents();
         kdtd.seluruhPerhitungan();
-        kotaPenerimaComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jakarta Pusat", "Jakarta Utara", "Jakarta Barat", "Jakarta Timur", "Jakarta Selatan"}));
-        kotaPengirimanComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jakarta Pusat", "Jakarta Utara", "Jakarta Barat", "Jakarta Timur", "Jakarta Selatan"}));
+        kdtd.seluruhProvinsi();
+        initProvinsi();
         kotaPengirimanComboBox.setVisible(false);
         jLabel52.setVisible(false);
         jLabel53.setVisible(false);
+        hargaTextField.setEnabled(false);
+        hargaTextField.setText("0");
+        provinsiPenerimaComboBox.setSelectedItem("DKI Jakarta");
+        
     }
     
+    public void initProvinsi(){
+        provinsiPenerimaComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(pengiriman.getSetProvinsi()));
+    }
+    
+    
+
 
   
 
@@ -588,7 +600,7 @@ public class AplikasiPengiriman extends javax.swing.JFrame {
         jLabel43.setText(":");
 
         provinsiPengirimComboBox.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        provinsiPengirimComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DKI Jakarta"}));
+        provinsiPengirimComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DKI Jakarta" }));
 
         kotaPengirimComboBox.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         kotaPengirimComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jakarta Utara", "Jakarta Barat", "Jakarta Timur", "Jakarta Selatan"}));
@@ -755,7 +767,6 @@ public class AplikasiPengiriman extends javax.swing.JFrame {
         jLabel41.setText(":");
 
         provinsiPenerimaComboBox.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        provinsiPenerimaComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DKI Jakarta", "Banten"}));
         provinsiPenerimaComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 provinsiPenerimaComboBoxActionPerformed(evt);
@@ -1214,11 +1225,14 @@ public class AplikasiPengiriman extends javax.swing.JFrame {
     private void asuransiRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asuransiRadioButton1ActionPerformed
         // TODO add your handling code here:
         asuransiRadioButton2.setSelected(false);
+        hargaTextField.setEnabled(true);
     }//GEN-LAST:event_asuransiRadioButton1ActionPerformed
 
     private void asuransiRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asuransiRadioButton2ActionPerformed
         // TODO add your handling code here:
         asuransiRadioButton1.setSelected(false);
+        hargaTextField.setEnabled(false);
+        hargaTextField.setText("0");
     }//GEN-LAST:event_asuransiRadioButton2ActionPerformed
 
     private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
@@ -1478,18 +1492,14 @@ public class AplikasiPengiriman extends javax.swing.JFrame {
 
     private void provinsiPenerimaComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_provinsiPenerimaComboBoxActionPerformed
         // TODO add your handling code here:
-        if(String.valueOf(provinsiPenerimaComboBox.getSelectedItem()).equalsIgnoreCase("DKI Jakarta")){
-            kotaPenerimaComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jakarta Pusat","Jakarta Utara", "Jakarta Barat", "Jakarta Timur", "Jakarta Selatan"}));
-            kotaPengirimanComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jakarta Pusat","Jakarta Utara", "Jakarta Barat", "Jakarta Timur", "Jakarta Selatan"}));
-        }
-        else if(String.valueOf(provinsiPenerimaComboBox.getSelectedItem()).equalsIgnoreCase("Banten")){
-        kotaPenerimaComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"Tangerang", "Kabupaten Tangerang", "Tangerang Selatan", "Cilegon", "Pandeglang", "Serang" }));
-        kotaPengirimanComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tangerang", "Kabupaten Tangerang", "Tangerang Selatan", "Cilegon", "Pandeglang", "Serang"}));
-        }
+            kotaPenerimaComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(kdtd.seluruhKota(provinsiPenerimaComboBox.getSelectedItem().toString())));
+            kotaPengirimanComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(kdtd.seluruhKota(provinsiPenerimaComboBox.getSelectedItem().toString())));
+            kdtd.getKumpulanKota().clear();
     }//GEN-LAST:event_provinsiPenerimaComboBoxActionPerformed
 
     private void kotaPenerimaComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kotaPenerimaComboBoxActionPerformed
         // TODO add your handling code here:
+        
         int indexing = kotaPenerimaComboBox.getSelectedIndex();
         kotaPengirimanComboBox.setSelectedIndex(indexing);
     }//GEN-LAST:event_kotaPenerimaComboBoxActionPerformed

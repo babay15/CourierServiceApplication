@@ -5,14 +5,17 @@
  */
 package id.co.indocyber.dao;
 
+import id.co.indocyber.model.Kota;
 import id.co.indocyber.model.Pengirim;
 import id.co.indocyber.model.Pengiriman;
 import id.co.indocyber.model.Tarif;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -22,6 +25,8 @@ import java.util.logging.Logger;
  */
 public class KotaDanTarifDAO {    
     private List <Tarif> kumpulan = new ArrayList<>();
+    private List<String> kumpulanKota = new ArrayList<>();
+    private Set <String> kumpulanProvinsi = new HashSet<>();
     private String provinsi;
     private String kota;
     private double reguler;
@@ -55,6 +60,43 @@ public class KotaDanTarifDAO {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(KotaDanTarifDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public void seluruhProvinsi(){
+        try {
+            Scanner scan = new Scanner(new File("C:/Users/user/Documents/NetBeansProjects/AplikasiPengirimanPaket/daftarTarifKota.txt"));
+            while(scan.hasNextLine()){
+                String line = scan.nextLine();
+                String[] data = line.split(",");
+                String provinsi = (data[0].trim());
+                getKumpulanProvinsi().add(provinsi);
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(KotaDanTarifDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public String[] seluruhKota(String provinsiX){
+        String[] arrayKota = {};
+        try {
+            Scanner scan = new Scanner(new File("C:/Users/user/Documents/NetBeansProjects/AplikasiPengirimanPaket/daftarTarifKota.txt"));
+            while(scan.hasNextLine()){
+                String line = scan.nextLine();
+                String[] data = line.split(",");
+                String provinsi1 = (data[0].trim());
+                if(provinsiX.equalsIgnoreCase(provinsi1)){
+                String kota = (data[1].trim());
+                getKumpulanKota().add(kota);}
+            }
+            for (String kumpulan : getKumpulanKota()) {
+                arrayKota = getKumpulanKota().toArray(new String[getKumpulanKota().size()]);
+                return arrayKota;
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(KotaDanTarifDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return arrayKota;
+        
     }
     
 
@@ -210,5 +252,33 @@ public class KotaDanTarifDAO {
      */
     public void setHds(double hds) {
         this.hds = hds;
+    }
+
+    /**
+     * @return the kumpulanProvinsi
+     */
+    public Set <String> getKumpulanProvinsi() {
+        return kumpulanProvinsi;
+    }
+
+    /**
+     * @param kumpulanProvinsi the kumpulanProvinsi to set
+     */
+    public void setKumpulanProvinsi(Set <String> kumpulanProvinsi) {
+        this.kumpulanProvinsi = kumpulanProvinsi;
+    }
+
+    /**
+     * @return the kumpulanKota
+     */
+    public List<String> getKumpulanKota() {
+        return kumpulanKota;
+    }
+
+    /**
+     * @param kumpulanKota the kumpulanKota to set
+     */
+    public void setKumpulanKota(List<String> kumpulanKota) {
+        this.kumpulanKota = kumpulanKota;
     }
 }

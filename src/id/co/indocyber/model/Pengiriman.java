@@ -5,8 +5,11 @@
  */
 package id.co.indocyber.model;
 
+import id.co.indocyber.app.AplikasiPengiriman;
 import id.co.indocyber.dao.KotaDanTarifDAO;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
@@ -31,6 +34,9 @@ public class Pengiriman {
     private double hargaSetelahAsuransi;
     private double dimensi;
     private double nilaiAsuransi;
+    private String provinsiY;
+    
+    
     
     public void getHargaPaketReguler(){
     kdtd.seluruhPerhitungan();
@@ -81,8 +87,18 @@ public class Pengiriman {
             }
         }
     }
-        
     
+    public String[] getSetProvinsi(){
+    kdtd.seluruhProvinsi();
+    String[] arrayProvinsi = {};
+        for(String kumpulan : kdtd.getKumpulanProvinsi()){
+            arrayProvinsi = kdtd.getKumpulanProvinsi().toArray(new String[kdtd.getKumpulanProvinsi().size()]);
+            return arrayProvinsi;
+        }
+        return arrayProvinsi;
+    }
+        
+
 
     /**
      * @return the nomorPaket
@@ -328,5 +344,19 @@ public class Pengiriman {
         else if(this.asuransi==false){
         this.nilaiAsuransi = 0.0;
         }
+    }
+
+    /**
+     * @return the provinsiY
+     */
+    public String getProvinsiY() {
+        return provinsiY;
+    }
+
+    /**
+     * @param provinsiY the provinsiY to set
+     */
+    public void setProvinsiY(String provinsiY) {
+        this.provinsiY = provinsiY;
     }
 }

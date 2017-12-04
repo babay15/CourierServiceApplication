@@ -5,17 +5,21 @@
  */
 package id.co.indocyber.model;
 
+import id.co.indocyber.dao.KotaDanTarifDAO;
+
 /**
  *
  * @author user
  */
 public class Penerima {
+    KotaDanTarifDAO kdtd = new KotaDanTarifDAO();
     private String namaPenerima;
     private String alamatPenerima;
     private String kotaPenerima;
     private String kodeposPenerima;
     private String provinsiPenerima;
     private String teleponPenerima;
+    
 
     public Penerima() {
     }
@@ -28,6 +32,8 @@ public class Penerima {
         this.provinsiPenerima = provinsiPenerima;
         this.teleponPenerima = teleponPenerima;
     }
+    
+    
 
     
     /**
@@ -43,6 +49,7 @@ public class Penerima {
     public void setNamaPenerima(String namaPenerima) {
         this.namaPenerima = namaPenerima;
     }
+
 
     /**
      * @return the alamatPenerima
