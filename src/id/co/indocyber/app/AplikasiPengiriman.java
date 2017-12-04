@@ -22,10 +22,8 @@ public class AplikasiPengiriman extends javax.swing.JFrame {
     DecimalFormat df = new DecimalFormat("###,###.##");
     Pengiriman pengiriman = new Pengiriman();
     Pengirim pengirim = new Pengirim();
-    Penerima penerima = new Penerima();
-    
+    Penerima penerima = new Penerima();    
     KotaDanTarifDAO kdtd = new KotaDanTarifDAO();
-    final double asuransi = 0.03;
     /**
      * Creates new form AplikasiPengiriman
      */
