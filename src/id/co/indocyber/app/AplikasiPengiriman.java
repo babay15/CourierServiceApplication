@@ -1238,15 +1238,16 @@ public class AplikasiPengiriman extends javax.swing.JFrame {
         namaPenerimaTextField.setText("");
         nomorTeleponPenerimaTextField.setText("");
         alamatPenerimaTextArea.setText("");
-        provinsiPenerimaComboBox.setSelectedIndex(0);
+        provinsiPenerimaComboBox.setSelectedItem("DKI Jakarta");
         kotaPenerimaComboBox.setSelectedIndex(0);
         kodePosPenerimaLabel.setText("");
+
         
         //PENGIRIM
         namaPengirimTextField.setText("");
         nomorTeleponPengirimTextField.setText("");
         alamatPengirimTextArea.setText("");
-        provinsiPengirimComboBox.setSelectedIndex(0);
+        provinsiPengirimComboBox.setSelectedItem(0);
         kotaPengirimComboBox.setSelectedIndex(0);
         kodePosPengirimTextField.setText("");
         
@@ -1260,7 +1261,7 @@ public class AplikasiPengiriman extends javax.swing.JFrame {
         tipePaketComboBox.setSelectedIndex(0);
         asuransiRadioButton1.setSelected(false);
         asuransiRadioButton2.setSelected(false);
-        hargaTextField.setText("");
+        hargaTextField.setText("0");
         kotaPengirimanComboBox.setSelectedIndex(0);
         pembayaranComboBox.setSelectedIndex(0);
     }//GEN-LAST:event_clearButtonActionPerformed
